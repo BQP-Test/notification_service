@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  bqp-notify-service:
+    image: bqp-notify-service
+    container_name: bqp-notify-service
+    build:
+      context: ./
+      dockerfile: ./compose/local/Dockerfile
+    command: /start
+    env_file:
+      - src/config/.env
+    expose:
+      - 6004
+    volumes:
+      - .:/app:z
+    ports:
+      - 6004:6004
+
+
+networks:
+  default:
+    external:
+      name: bqp_network
