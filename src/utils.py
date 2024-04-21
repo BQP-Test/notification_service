@@ -1,10 +1,13 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+
+
 
 # Email configuration
-sender_email = "vijender.in@gmail.com"
-password = "jxgfjvrayihbjooe"
+sender_email = os.environ.get('sender_email')
+password = os.environ.get('password')
 
 def send_new_post(receiver_emails, article_id):
     article_url = f"http://localhost:3000/articles/{article_id}"
